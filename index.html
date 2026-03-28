@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrecisionMeet — AI-Powered Meeting Scheduling</title>
+  <meta name="description" content="PrecisionMeet uses AI to recommend the perfect meeting length — then books it instantly on your calendar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── Email Capture Form ── */
+    .early-access {
+      background: white;
+      padding: 72px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .early-access-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .early-access-inner h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      letter-spacing: -0.025em;
+    }
+
+    .early-access-inner p {
+      color: var(--text-secondary);
+      font-size: 0.97rem;
+      margin-bottom: 36px;
+    }
+
+    .ea-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ea-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .ea-form input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.93rem;
+      color: var(--text-primary);
+      background: var(--off-white);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .ea-form input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      background: white;
+    }
+
+    .ea-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .ea-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      margin-top: 4px;
+    }
+
+    .ea-submit:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37, 99, 235, 0.35);
+    }
+
+    .ea-submit:active {
+      transform: translateY(0);
+    }
+
+    .ea-confirmation {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 36px 24px;
+      background: rgba(37, 99, 235, 0.04);
+      border: 1.5px solid rgba(37, 99, 235, 0.18);
+      border-radius: var(--radius-lg);
+    }
+
+    .ea-confirmation .confirm-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(37, 99, 235, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .ea-confirmation h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .ea-confirmation p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* ── 3-Feature Section ── */
+    .features-three {
+      background: var(--off-white);
+      padding: 80px 0 88px;
+    }
+
+    .features-three-header {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 56px;
+    }
+
+    .features-three-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .ft-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ft-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.09);
+      border-color: rgba(37, 99, 235, 0.22);
+    }
+
+    .ft-icon-wrap {
+      width: 64px;
+      height: 64px;
+      background: rgba(37, 99, 235, 0.07);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      margin: 0 auto 22px;
+      transition: background 0.2s ease;
+    }
+
+    .ft-card:hover .ft-icon-wrap {
+      background: rgba(37, 99, 235, 0.13);
+    }
+
+    .ft-card h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      letter-spacing: -0.015em;
+    }
+
+    .ft-card p {
+      color: var(--text-secondary);
+      font-size: 0.91rem;
+      line-height: 1.72;
+    }
+
+    /* ── Simple Footer ── */
+    .footer-simple {
+      background: var(--navy);
+      padding: 28px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-simple .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-simple .footer-logo {
+      font-size: 1rem;
+      font-weight: 800;
+      color: white;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-simple .footer-logo span {
+      color: var(--blue);
+    }
+
+    .footer-simple p {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 768px) {
+      .ea-form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .features-three-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-simple .container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Precision<span>Meet</span></a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- ① HERO -->
+  <section class="hero">
+    <div class="container">
+      <div style="max-width:680px;">
+        <div class="hero-label">AI-Powered Scheduling</div>
+        <h1>Book Smarter.<br />Meet Better.</h1>
+        <p>PrecisionMeet uses AI to recommend the perfect meeting length — then books it instantly on your calendar.</p>
+        <div class="hero-actions">
+          <a href="#early-access" class="btn btn-primary btn-lg">Get Early Access</a>
+          <a href="how-it-works.html" class="btn btn-secondary btn-lg">See How It Works</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② EMAIL CAPTURE -->
+  <section class="early-access" id="early-access">
+    <div class="container">
+      <div class="early-access-inner">
+        <h2>Get Early Access</h2>
+        <p>Be among the first to experience smarter scheduling. No credit card required.</p>
+
+        <form class="ea-form" id="ea-form" novalidate>
+          <div class="ea-form-row">
+            <input type="text" id="ea-first" placeholder="First name" autocomplete="given-name" required />
+            <input type="text" id="ea-last" placeholder="Last name" autocomplete="family-name" required />
+          </div>
+          <input type="email" id="ea-email" placeholder="Work or school email" autocomplete="email" required />
+          <button type="submit" class="ea-submit">Get Early Access</button>
+        </form>
+
+        <div class="ea-confirmation" id="ea-confirmation">
+          <div class="confirm-icon">✦</div>
+          <h3>You're on the list!</h3>
+          <p id="ea-confirm-name">We'll be in touch soon with your early access details.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 3-FEATURE SECTION -->
+  <section class="features-three">
+    <div class="container">
+      <div class="features-three-header">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Three things PrecisionMeet does exceptionally well</h2>
+      </div>
+      <div class="features-three-grid">
+
+        <div class="ft-card">
+          <div class="ft-icon-wrap">📅</div>
+          <h3>Calendar Sync</h3>
+          <p>Connects directly to Google Calendar and Microsoft Outlook to pull your real availability — live, accurate, and always up to date. No manual entry, no double-booking.</p>
+        </div>
+
+        <div class="ft-card">
+          <div class="ft-icon-wrap">✦</div>
+          <h3>AI Meeting Length</h3>
+          <p>Describe your meeting in a sentence and our AI recommends the right length — 15, 30, or 60 minutes — based on the purpose, your context, and scheduling best practices.</p>
+        </div>
+
+        <div class="ft-card">
+          <div class="ft-icon-wrap">⚡</div>
+          <h3>Instant Booking</h3>
+          <p>Confirm a time slot and PrecisionMeet adds the event to both calendars, sends invitations, and generates a video call link — all in one click.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ FOOTER -->
+  <footer class="footer-simple">
+    <div class="container">
+      <a href="index.html" class="footer-logo">Precision<span>Meet</span></a>
+      <p>&copy; 2026 PrecisionMeet. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Smooth scroll hero CTA → form
+    document.querySelector('a[href="#early-access"]').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('early-access').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Email capture form
+    const eaForm = document.getElementById('ea-form');
+    const eaConfirmation = document.getElementById('ea-confirmation');
+    const eaConfirmName = document.getElementById('ea-confirm-name');
+
+    eaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const first = document.getElementById('ea-first').value.trim();
+      const last  = document.getElementById('ea-last').value.trim();
+      const email = document.getElementById('ea-email').value.trim();
+
+      if (!first || !last) {
+        document.getElementById(!first ? 'ea-first' : 'ea-last').focus();
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById('ea-email').focus();
+        document.getElementById('ea-email').style.borderColor = '#ef4444';
+        return;
+      }
+
+      // Show confirmation, hide form
+      eaForm.style.display = 'none';
+      eaConfirmName.textContent = `Thanks, ${first}! We'll reach out to ${email} with your early access details.`;
+      eaConfirmation.style.display = 'flex';
+    });
+
+    // Reset email field error styling on input
+    document.getElementById('ea-email').addEventListener('input', function () {
+      this.style.borderColor = '';
+    });
+  </script>
+</body>
+</html>
