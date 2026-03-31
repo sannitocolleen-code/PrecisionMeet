@@ -11,77 +11,132 @@
   <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
+
+    /* ── Page hero overrides (no text-center conflict) ── */
+    .about-hero {
+      background: var(--navy);
+      padding: 140px 0 96px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(37,99,235,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      color: white;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .about-hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem;
+      max-width: 540px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ── Hero photo ── */
+    .hero-photo-section {
+      background: white;
+      padding: 80px 0 0;
+    }
+
+    .hero-photo-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-photo-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      display: block;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+    }
+
     /* ── Founder Bio ── */
     .founder-section {
       background: white;
-      padding: 88px 0;
+      padding: 64px 0 88px;
     }
 
     .founder-grid {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 1fr 1.4fr;
       gap: 64px;
       align-items: start;
       max-width: 860px;
       margin: 0 auto;
     }
 
-    .founder-photo-wrap {
+    .founder-photos-col {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 16px;
     }
 
-    .founder-photo {
-      width: 220px;
-      height: 220px;
-      border-radius: 20px;
-      background: var(--off-white);
-      border: 2px dashed var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 500;
+    .founder-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .founder-duo img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 14px;
+      display: block;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .founder-duo img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+    }
+
+    .founder-name-tag {
       text-align: center;
-      padding: 20px;
+      padding-top: 4px;
     }
 
-    .founder-photo .photo-icon {
-      font-size: 2.4rem;
-      opacity: 0.4;
-    }
-
-    .founder-photo .photo-hint {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .founder-name {
+    .founder-name-tag h3 {
       font-size: 1rem;
       font-weight: 700;
       color: var(--text-primary);
-      text-align: center;
+      margin-bottom: 3px;
     }
 
-    .founder-title {
+    .founder-name-tag span {
       font-size: 0.82rem;
       color: var(--blue);
       font-weight: 600;
-      text-align: center;
     }
 
     .founder-bio h2 {
-      font-size: 1.7rem;
+      font-size: 1.65rem;
       font-weight: 800;
       color: var(--text-primary);
       margin-bottom: 20px;
       letter-spacing: -0.025em;
+      line-height: 1.2;
     }
 
     .founder-bio p {
@@ -117,26 +172,12 @@
     .video-placeholder {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 */
+      padding-top: 56.25%;
       background: var(--navy);
       border-radius: var(--radius-xl);
       overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.18);
     }
-
-    /* ── REPLACE THIS COMMENT WITH YOUR YOUTUBE EMBED ──
-       To embed your video, replace the entire .video-placeholder div below with:
-
-       <div style="position:relative;width:100%;padding-top:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.18);">
-         <iframe
-           style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-           src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-           title="PrecisionMeet Pitch"
-           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-           allowfullscreen>
-         </iframe>
-       </div>
-    ── */
 
     .video-placeholder-inner {
       position: absolute;
@@ -152,8 +193,8 @@
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: rgba(37, 99, 235, 0.2);
-      border: 2px solid rgba(37, 99, 235, 0.4);
+      background: rgba(37,99,235,0.2);
+      border: 2px solid rgba(37,99,235,0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -167,7 +208,7 @@
     }
 
     .video-placeholder-inner p {
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255,255,255,0.4);
       font-size: 0.8rem;
       text-align: center;
       max-width: 280px;
@@ -175,111 +216,27 @@
       margin: 0;
     }
 
-    /* ── Photo Row ── */
-    .photos-section {
-      background: white;
-      padding: 88px 0;
-    }
-
-    .photos-section-header {
-      text-align: center;
-      max-width: 480px;
-      margin: 0 auto 52px;
-    }
-
-    .photos-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .photo-slot {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .photo-frame {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      background: var(--off-white);
-      border: 2px dashed var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: border-color 0.2s ease, background 0.2s ease;
-      overflow: hidden;
-
-      /* ── REPLACE: swap out the entire .photo-frame div with an <img> tag ──
-         Example:
-         <img src="images/photo1.jpg" alt="Your name"
-              style="width:100%;aspect-ratio:1/1;border-radius:50%;object-fit:cover;" />
-      ── */
-    }
-
-    .photo-frame:hover {
-      border-color: rgba(37, 99, 235, 0.3);
-      background: rgba(37, 99, 235, 0.03);
-    }
-
-    .photo-frame .photo-icon {
-      font-size: 2.2rem;
-      opacity: 0.3;
-    }
-
-    .photo-frame .photo-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .photo-caption {
-      text-align: center;
-    }
-
-    .photo-caption h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 3px;
-    }
-
-    .photo-caption p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .founder-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 40px;
       }
 
-      .founder-photo-wrap {
-        flex-direction: row;
-        align-items: center;
-        gap: 20px;
+      .hero-photo-section {
+        padding: 56px 0 0;
       }
 
-      .founder-photo {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        flex-shrink: 0;
+      .hero-photo-img {
+        max-height: 340px;
+        border-radius: 14px;
       }
+    }
 
-      .photos-row {
-        grid-template-columns: 1fr;
-        max-width: 280px;
+    @media (max-width: 480px) {
+      .founder-duo {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
       }
     }
   </style>
@@ -301,8 +258,8 @@
     </ul>
   </nav>
 
-  <!-- ① PAGE HERO -->
-  <section class="page-hero">
+  <!-- PAGE HERO -->
+  <section class="about-hero">
     <div class="container">
       <div class="section-label" style="color:#93c5fd;">Our Story</div>
       <h1>Built for People Who<br />Value Their Time</h1>
@@ -310,22 +267,37 @@
     </div>
   </section>
 
-  <!-- ② FOUNDER BIO -->
+  <!-- HERO PHOTO — large, full-width feel -->
+  <section class="hero-photo-section">
+    <div class="container">
+      <div class="hero-photo-wrap">
+        <img
+          src="images/photo1.webp"
+          alt="Colleen Sannito, Founder of PrecisionMeet"
+          class="hero-photo-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER BIO + two photos side by side -->
   <section class="founder-section">
     <div class="container">
       <div class="founder-grid">
 
-        <div class="founder-photo-wrap">
-          <!-- REPLACE: swap this div with your headshot <img> tag -->
-          <div class="founder-photo">
-            <span class="photo-icon">🖼</span>
-            <span class="photo-hint">Replace with<br />your photo</span>
+        <!-- Left: two photos stacked side by side -->
+        <div class="founder-photos-col">
+          <div class="founder-duo">
+            <img src="images/photo2.webp" alt="Colleen Sannito" />
+            <img src="images/photo3.webp" alt="Colleen Sannito" />
           </div>
-          <!-- REPLACE: update name and title below -->
-          <div class="founder-name">[Your Name]</div>
-          <div class="founder-title">Founder &amp; CEO, PrecisionMeet</div>
+          <div class="founder-name-tag">
+            <h3>Colleen Sannito</h3>
+            <span>Founder &amp; CEO, PrecisionMeet</span>
+          </div>
         </div>
 
+        <!-- Right: bio text -->
         <div class="founder-bio">
           <h2>Hi, I'm [Your Name] — and I built PrecisionMeet because scheduling was stealing my time.</h2>
 
@@ -337,7 +309,7 @@
             [Replace this paragraph with the moment or insight that inspired the product. Example: "One afternoon I counted 47 emails just to schedule a single 30-minute call. I knew there had to be a better way — one that used AI to take the guesswork out entirely."]
           </p>
           <p>
-            [Replace this paragraph with your vision or personal connection to the target audience. Example: "I also coach a student leadership program at my alma mater, and I've seen firsthand how coordination overhead holds great leaders back. PrecisionMeet is for them too."]
+            [Replace this paragraph with your vision or personal connection to the target audience. Example: "I also lead a student organization at my university, and I've seen firsthand how coordination overhead holds great leaders back. PrecisionMeet is for them too."]
           </p>
         </div>
 
@@ -345,7 +317,7 @@
     </div>
   </section>
 
-  <!-- ③ PITCH VIDEO -->
+  <!-- PITCH VIDEO -->
   <section class="video-section">
     <div class="container">
       <div class="video-section-header">
@@ -353,13 +325,9 @@
         <h2 class="section-title">See PrecisionMeet in 30 seconds</h2>
         <p class="section-subtitle">Watch a quick overview of how PrecisionMeet works and why it exists.</p>
       </div>
-
       <div class="video-wrapper">
         <!--
-          ════════════════════════════════════════════════
-          REPLACE THIS ENTIRE BLOCK with your YouTube embed.
-          Go to your YouTube video → Share → Embed → copy the
-          <iframe> tag, then paste it inside a wrapper div like:
+          REPLACE this block with your YouTube embed:
 
           <div style="position:relative;width:100%;padding-top:56.25%;
                       border-radius:20px;overflow:hidden;
@@ -368,80 +336,24 @@
               style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
               src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
               title="PrecisionMeet Pitch"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-                     gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen>
             </iframe>
           </div>
-          ════════════════════════════════════════════════
         -->
         <div class="video-placeholder">
           <div class="video-placeholder-inner">
             <div class="video-play-ring">▶</div>
             <h3>Your 30-Second Pitch Video</h3>
-            <p>Replace this block with your YouTube embed code — see the comment above for exact instructions.</p>
+            <p>Replace this block with your YouTube embed code.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ④ PHOTO ROW -->
-  <section class="photos-section">
-    <div class="container">
-      <div class="photos-section-header">
-        <div class="section-label">Behind the Product</div>
-        <h2 class="section-title">A few faces behind PrecisionMeet</h2>
-        <p class="section-subtitle">Replace the placeholders below with your own photos.</p>
-      </div>
-
-      <div class="photos-row">
-
-        <div class="photo-slot">
-          <!-- REPLACE: swap .photo-frame div with <img src="images/photo1.jpg" ... /> -->
-          <div class="photo-frame">
-            <span class="photo-icon">📷</span>
-            <span class="photo-label">Photo 1</span>
-          </div>
-          <div class="photo-caption">
-            <!-- REPLACE: update name and caption -->
-            <h4>[Name]</h4>
-            <p>[Title or caption]</p>
-          </div>
-        </div>
-
-        <div class="photo-slot">
-          <!-- REPLACE: swap .photo-frame div with <img src="images/photo2.jpg" ... /> -->
-          <div class="photo-frame">
-            <span class="photo-icon">📷</span>
-            <span class="photo-label">Photo 2</span>
-          </div>
-          <div class="photo-caption">
-            <!-- REPLACE: update name and caption -->
-            <h4>[Name]</h4>
-            <p>[Title or caption]</p>
-          </div>
-        </div>
-
-        <div class="photo-slot">
-          <!-- REPLACE: swap .photo-frame div with <img src="images/photo3.jpg" ... /> -->
-          <div class="photo-frame">
-            <span class="photo-icon">📷</span>
-            <span class="photo-label">Photo 3</span>
-          </div>
-          <div class="photo-caption">
-            <!-- REPLACE: update name and caption -->
-            <h4>[Name]</h4>
-            <p>[Title or caption]</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER (matches homepage) -->
-  <footer class="footer-simple" style="background:var(--navy);padding:28px 0;border-top:1px solid rgba(255,255,255,0.06);">
+  <!-- FOOTER -->
+  <footer style="background:var(--navy);padding:28px 0;border-top:1px solid rgba(255,255,255,0.06);">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
       <a href="index.html" style="font-size:1rem;font-weight:800;color:white;text-decoration:none;letter-spacing:-0.02em;">Precision<span style="color:#2563EB;">Meet</span></a>
       <p style="color:rgba(255,255,255,0.3);font-size:0.82rem;">&copy; 2026 PrecisionMeet. All rights reserved.</p>

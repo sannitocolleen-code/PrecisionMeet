@@ -229,6 +229,36 @@
       font-size: 0.82rem;
     }
 
+    /* ── Hero photo layout ── */
+    .hero-index-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-founder-img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      display: block;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-index-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .hero-index-photo {
+        display: none;
+      }
+    }
+
     @media (max-width: 768px) {
       .ea-form-row {
         grid-template-columns: 1fr;
@@ -265,13 +295,22 @@
   <!-- ① HERO -->
   <section class="hero">
     <div class="container">
-      <div style="max-width:680px;">
-        <div class="hero-label">AI-Powered Scheduling</div>
-        <h1>Book Smarter.<br />Meet Better.</h1>
-        <p>PrecisionMeet uses AI to recommend the perfect meeting length — then books it instantly on your calendar.</p>
-        <div class="hero-actions">
-          <a href="#early-access" class="btn btn-primary btn-lg">Get Early Access</a>
-          <a href="how-it-works.html" class="btn btn-secondary btn-lg">See How It Works</a>
+      <div class="hero-index-grid">
+        <div class="hero-index-text">
+          <div class="hero-label">AI-Powered Scheduling</div>
+          <h1>Book Smarter.<br />Meet Better.</h1>
+          <p>PrecisionMeet uses AI to recommend the perfect meeting length — then books it instantly on your calendar.</p>
+          <div class="hero-actions">
+            <a href="#early-access" class="btn btn-primary btn-lg">Get Early Access</a>
+            <a href="how-it-works.html" class="btn btn-secondary btn-lg">See How It Works</a>
+          </div>
+        </div>
+        <div class="hero-index-photo">
+          <img
+            src="images/photo1.webp"
+            alt="Colleen Sannito, Founder of PrecisionMeet"
+            class="hero-founder-img"
+          />
         </div>
       </div>
     </div>
