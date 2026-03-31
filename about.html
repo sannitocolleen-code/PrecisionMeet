@@ -164,55 +164,26 @@
     }
 
     .video-wrapper {
-      max-width: 720px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
-    .video-placeholder {
+    .video-embed {
       position: relative;
       width: 100%;
-      padding-top: 56.25%;
-      background: var(--navy);
-      border-radius: var(--radius-xl);
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 24px 64px rgba(0,0,0,0.18);
     }
 
-    .video-placeholder-inner {
+    .video-embed iframe {
       position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .video-play-ring {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: rgba(37,99,235,0.2);
-      border: 2px solid rgba(37,99,235,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-    }
-
-    .video-placeholder-inner h3 {
-      color: white;
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .video-placeholder-inner p {
-      color: rgba(255,255,255,0.4);
-      font-size: 0.8rem;
-      text-align: center;
-      max-width: 280px;
-      line-height: 1.55;
-      margin: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     /* ── Responsive ── */
@@ -324,27 +295,13 @@
         <p class="section-subtitle">Watch a quick overview of how PrecisionMeet works and why it exists.</p>
       </div>
       <div class="video-wrapper">
-        <!--
-          REPLACE this block with your YouTube embed:
-
-          <div style="position:relative;width:100%;padding-top:56.25%;
-                      border-radius:20px;overflow:hidden;
-                      box-shadow:0 24px 64px rgba(0,0,0,0.18);">
-            <iframe
-              style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-              src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-              title="PrecisionMeet Pitch"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-          </div>
-        -->
-        <div class="video-placeholder">
-          <div class="video-placeholder-inner">
-            <div class="video-play-ring">▶</div>
-            <h3>Your 30-Second Pitch Video</h3>
-            <p>Replace this block with your YouTube embed code.</p>
-          </div>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/QgZKbL5wrrM"
+            title="PrecisionMeet Pitch"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </div>
