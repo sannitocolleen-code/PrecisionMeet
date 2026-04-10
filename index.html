@@ -332,7 +332,7 @@
             <input type="text" id="ea-last" placeholder="Last name" autocomplete="family-name" required />
           </div>
           <input type="email" id="ea-email" placeholder="Work or school email" autocomplete="email" required />
-          <button type="submit" class="ea-submit">Get Early Access</button>
+          <button type="submit" id="ea-submit" class="ea-submit">Get Early Access</button>
         </form>
 
         <div id="ea-error" style="display:none;margin-top:14px;padding:14px 18px;background:rgba(239,68,68,0.06);border:1.5px solid rgba(239,68,68,0.25);border-radius:var(--radius-sm);color:#dc2626;font-size:0.88rem;font-weight:500;line-height:1.5;">
@@ -388,6 +388,8 @@
   </footer>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -408,20 +410,18 @@
     });
 
     // ── Supabase client ────────────────────────────────────────────
-    // Replace the two placeholders below with your Supabase project values.
-    // Project Settings → API → Project URL and anon/public key.
-    const SUPABASE_URL      = '[PASTE YOUR SUPABASE URL]';
-    const SUPABASE_ANON_KEY = '[PASTE YOUR ANON KEY]';
+    const SUPABASE_URL      = 'https://elomyxrpjzzkacqidrlr.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsb215eHJwanp6a2FjcWlkcmxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NDkyOTUsImV4cCI6MjA5MTQyNTI5NX0.oKlK_c5yxGh1EjRepdGWQlDtaWCrzHECLoDxKD2oZWs';
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // ── Email capture form ─────────────────────────────────────────
-    const eaForm        = document.getElementById('ea-form');
+    const eaForm         = document.getElementById('ea-form');
     const eaConfirmation = document.getElementById('ea-confirmation');
     const eaConfirmName  = document.getElementById('ea-confirm-name');
     const eaError        = document.getElementById('ea-error');
-    const eaSubmitBtn    = eaForm.querySelector('.ea-submit');
+    const eaSubmitBtn    = document.getElementById('ea-submit');
 
-    eaForm.addEventListener('submit', async (e) => {
+    document.getElementById('ea-form').addEventListener('submit', async function (e) {
       e.preventDefault();
       eaError.style.display = 'none';
 
@@ -468,6 +468,8 @@
     document.getElementById('ea-email').addEventListener('input', function () {
       this.style.borderColor = '';
     });
+
+    }); // end DOMContentLoaded
   </script>
 </body>
 </html>
