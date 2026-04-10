@@ -44,6 +44,328 @@
       cursor: not-allowed;
       transform: none;
     }
+
+    /* ── Interactive Demo ── */
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .demo-card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.09);
+    }
+
+    .demo-progress {
+      display: flex;
+      align-items: center;
+      padding: 24px 40px;
+      background: var(--off-white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-step-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .demo-step-dot .d-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      font-weight: 800;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .demo-step-dot .d-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #94a3b8;
+      transition: color 0.3s;
+    }
+
+    .demo-step-dot.active .d-dot  { background: var(--blue); color: white; }
+    .demo-step-dot.active .d-label { color: var(--blue); }
+    .demo-step-dot.done .d-dot    { background: #22c55e; color: white; }
+    .demo-step-dot.done .d-label  { color: #16a34a; }
+
+    .demo-step-line {
+      flex: 1;
+      height: 2px;
+      background: #e2e8f0;
+      margin: 0 10px 18px;
+      transition: background 0.4s ease;
+    }
+
+    .demo-step-line.done { background: #22c55e; }
+
+    .demo-panel { padding: 48px 52px; }
+
+    .demo-panel-header { text-align: center; margin-bottom: 32px; }
+
+    .demo-panel-header h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+
+    .demo-panel-header p {
+      color: var(--text-secondary);
+      font-size: 0.93rem;
+      line-height: 1.65;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .cal-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 16px 22px;
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+      text-align: left;
+    }
+
+    .cal-btn:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 18px rgba(37,99,235,0.12);
+      transform: translateY(-1px);
+    }
+
+    .cal-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 900;
+      flex-shrink: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .demo-spinner {
+      width: 44px;
+      height: 44px;
+      border: 3px solid rgba(37,99,235,0.15);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+      margin: 0 auto;
+    }
+
+    .demo-success-check {
+      width: 72px;
+      height: 72px;
+      background: rgba(34,197,94,0.1);
+      border: 2px solid rgba(34,197,94,0.28);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #16a34a;
+      margin: 0 auto;
+    }
+
+    .demo-next-btn {
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 13px 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .demo-next-btn:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,99,235,0.3);
+    }
+
+    .demo-secondary-btn {
+      background: var(--off-white);
+      color: var(--text-primary);
+      border: 1.5px solid var(--border);
+    }
+
+    .demo-secondary-btn:hover {
+      background: #e2e8f0;
+      box-shadow: none;
+    }
+
+    #demo-chat-input {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.87rem;
+      line-height: 1.5;
+      resize: none;
+      outline: none;
+      min-height: 44px;
+      max-height: 120px;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+
+    #demo-chat-input:focus  { border-color: rgba(37,99,235,0.55); }
+    #demo-chat-input::placeholder { color: rgba(255,255,255,0.28); }
+
+    #demo-chat-send:hover    { background: var(--blue-dark) !important; }
+    #demo-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    #demo-chat-messages {
+      min-height: 80px;
+      max-height: 280px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.12) transparent;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .booking-day-col { display: flex; flex-direction: column; gap: 7px; }
+
+    .booking-day-header {
+      text-align: center;
+      padding: 10px 4px;
+      background: var(--off-white);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    .booking-day-header .d-name {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .booking-day-header .d-num {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-top: 2px;
+    }
+
+    .booking-day-header .d-month {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .time-slot {
+      padding: 9px 4px;
+      background: white;
+      border: 1.5px solid rgba(37,99,235,0.22);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s;
+      width: 100%;
+    }
+
+    .time-slot:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: white;
+      transform: scale(1.04);
+      box-shadow: 0 4px 14px rgba(37,99,235,0.28);
+    }
+
+    .time-slot.unavailable {
+      background: var(--off-white);
+      border-color: transparent;
+      color: #cbd5e1;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .confirm-detail-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 6px 0;
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    .confirm-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .confirm-row:last-child { border-bottom: none; }
+
+    .confirm-row .cr-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      min-width: 100px;
+    }
+
+    .confirm-row .cr-val {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 680px) {
+      .demo-panel { padding: 28px 20px; }
+      .demo-progress { padding: 18px 20px; }
+      .d-label { display: none; }
+      .booking-grid { grid-template-columns: repeat(3, 1fr); }
+      .booking-day-col:nth-child(4),
+      .booking-day-col:nth-child(5) { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -184,49 +506,147 @@
     </div>
   </section>
 
-  <!-- LIVE AI CHAT DEMO -->
-  <section class="section" style="background:white;">
+  <!-- INTERACTIVE DEMO -->
+  <section class="section" style="background:var(--off-white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
     <div class="container">
-      <div style="text-align:center;max-width:520px;margin:0 auto 52px;">
-        <div class="section-label">Try It Live</div>
-        <h2 class="section-title">Ask the AI Meeting Advisor</h2>
-        <p style="color:var(--text-secondary);font-size:0.97rem;line-height:1.75;">Describe any meeting you need to schedule and get an instant AI recommendation on how long it should be.</p>
+
+      <div style="text-align:center;max-width:540px;margin:0 auto 52px;">
+        <div class="section-label">Interactive Demo</div>
+        <h2 class="section-title">Try PrecisionMeet in 3 steps</h2>
+        <p style="color:var(--text-secondary);font-size:0.97rem;line-height:1.75;">Walk through the complete booking flow — from calendar connect to confirmed meeting.</p>
       </div>
 
-      <div style="max-width:680px;margin:0 auto;">
-        <div style="background:var(--navy);border-radius:var(--radius-xl);padding:32px;box-shadow:var(--shadow-lg);">
+      <div class="demo-card">
 
-          <!-- Chat header -->
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);">
-            <div style="width:24px;height:24px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✦</div>
-            <span style="color:white;font-size:0.9rem;font-weight:600;">AI Meeting Advisor</span>
-            <span style="margin-left:auto;background:rgba(34,197,94,0.15);color:#4ade80;font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:100px;border:1px solid rgba(34,197,94,0.2);">● Live</span>
+        <!-- ── Step progress bar ── -->
+        <div class="demo-progress">
+          <div class="demo-step-dot active" id="prog-1">
+            <div class="d-dot">1</div>
+            <span class="d-label">Connect</span>
+          </div>
+          <div class="demo-step-line" id="line-1"></div>
+          <div class="demo-step-dot" id="prog-2">
+            <div class="d-dot">2</div>
+            <span class="d-label">Describe</span>
+          </div>
+          <div class="demo-step-line" id="line-2"></div>
+          <div class="demo-step-dot" id="prog-3">
+            <div class="d-dot">3</div>
+            <span class="d-label">Book</span>
+          </div>
+        </div>
+
+        <!-- ── Step 1: Calendar Connect ── -->
+        <div id="demo-panel-1" class="demo-panel">
+          <div class="demo-panel-header">
+            <h3>Connect Your Calendar</h3>
+            <p>Choose the calendar you use every day. We only read your free/busy availability — your event details stay private.</p>
           </div>
 
-          <!-- Messages -->
-          <div id="chat-messages" style="min-height:80px;display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
-            <div style="background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.25);border-radius:12px;padding:14px 16px;border-bottom-left-radius:3px;">
-              <div style="font-size:0.7rem;color:#2563EB;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">✦ AI Meeting Advisor</div>
-              <p style="color:#93c5fd;font-size:0.85rem;line-height:1.6;margin:0;">Hi! Describe any meeting you need to schedule and I'll recommend the perfect length. For example: <em>"Quick check-in with my team on the product launch"</em> or <em>"Strategy session with a client to review Q4 goals."</em></p>
+          <div id="cal-buttons" style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto;">
+            <button class="cal-btn" onclick="connectCalendar('google')">
+              <div class="cal-icon" style="background:#eef2ff;color:#4f46e5;font-size:1rem;">G</div>
+              Continue with Google Calendar
+            </button>
+            <button class="cal-btn" onclick="connectCalendar('outlook')">
+              <div class="cal-icon" style="background:#eff6ff;color:#2563eb;font-size:1rem;">O</div>
+              Continue with Microsoft Outlook
+            </button>
+          </div>
+
+          <div id="cal-loading" style="display:none;text-align:center;padding:44px 0;">
+            <div class="demo-spinner"></div>
+            <p style="margin-top:18px;color:var(--text-secondary);font-size:0.9rem;">Connecting to your calendar…</p>
+          </div>
+
+          <div id="cal-success" style="display:none;text-align:center;padding:12px 0 4px;">
+            <div class="demo-success-check">✓</div>
+            <h4 style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin:16px 0 4px;">Calendar Connected</h4>
+            <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(34,197,94,0.07);border:1px solid rgba(34,197,94,0.22);border-radius:100px;padding:5px 14px;margin-bottom:6px;">
+              <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block;"></span>
+              <span style="font-size:0.85rem;font-weight:700;color:#16a34a;">Colleen Sannito</span>
+            </div>
+            <p style="color:var(--text-secondary);font-size:0.88rem;margin:6px 0 28px;">Your availability is synced and ready to go.</p>
+            <button class="demo-next-btn" onclick="goToStep(2)">Continue to AI Advisor →</button>
+          </div>
+        </div>
+
+        <!-- ── Step 2: AI Chat ── -->
+        <div id="demo-panel-2" class="demo-panel" style="display:none;">
+          <div class="demo-panel-header">
+            <h3>Describe Your Meeting</h3>
+            <p>Tell the AI what you need to schedule. It will recommend the perfect length based on what you're trying to accomplish.</p>
+          </div>
+
+          <div style="background:var(--navy);border-radius:var(--radius-xl);padding:28px;">
+            <!-- Chat header -->
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="width:24px;height:24px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✦</div>
+              <span style="color:white;font-size:0.9rem;font-weight:600;">AI Meeting Advisor</span>
+              <span style="margin-left:auto;background:rgba(34,197,94,0.15);color:#4ade80;font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:100px;border:1px solid rgba(34,197,94,0.2);">● Live</span>
+            </div>
+
+            <!-- Messages -->
+            <div id="demo-chat-messages">
+              <div style="background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.25);border-radius:12px;padding:14px 16px;border-bottom-left-radius:3px;">
+                <div style="font-size:0.7rem;color:#2563EB;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">✦ AI Meeting Advisor</div>
+                <p style="color:#93c5fd;font-size:0.85rem;line-height:1.6;margin:0;">Hi Colleen! Your calendar is connected. Describe the meeting you need to schedule and I'll recommend the perfect length — 15, 30, 45, or 60 minutes.</p>
+              </div>
+            </div>
+
+            <!-- Input -->
+            <div style="display:flex;gap:10px;align-items:flex-end;">
+              <textarea id="demo-chat-input" placeholder='e.g. "Strategy session with my team to review Q3 goals..."' rows="1"></textarea>
+              <button id="demo-chat-send" onclick="sendDemoMessage()" style="background:var(--blue);color:white;border:none;border-radius:10px;padding:12px 18px;font-family:'Inter',sans-serif;font-size:0.87rem;font-weight:700;cursor:pointer;flex-shrink:0;line-height:1.5;transition:background 0.2s;">Send ↵</button>
             </div>
           </div>
 
-          <!-- Input area -->
-          <div style="display:flex;gap:10px;align-items:flex-end;">
-            <textarea
-              id="chat-input"
-              placeholder="Describe your meeting..."
-              rows="1"
-              style="flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 14px;color:white;font-family:'Inter',sans-serif;font-size:0.87rem;line-height:1.5;resize:none;outline:none;min-height:44px;max-height:120px;transition:border-color 0.2s;box-sizing:border-box;"
-            ></textarea>
-            <button
-              id="chat-send"
-              style="background:var(--blue);color:white;border:none;border-radius:10px;padding:12px 18px;font-family:'Inter',sans-serif;font-size:0.87rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 0.2s,transform 0.15s,opacity 0.2s;flex-shrink:0;line-height:1.5;"
-            >Send ↵</button>
+          <!-- Continue button — hidden until AI responds -->
+          <div id="demo-chat-continue" style="display:none;justify-content:center;margin-top:28px;">
+            <button class="demo-next-btn" onclick="goToStep(3); buildBookingGrid();">View Available Slots →</button>
           </div>
-
         </div>
-      </div>
+
+        <!-- ── Step 3: Booking Grid ── -->
+        <div id="demo-panel-3" class="demo-panel" style="display:none;">
+          <div class="demo-panel-header">
+            <h3>Pick a Time</h3>
+            <p id="booking-grid-subtitle">Here are available slots matching your AI-recommended meeting duration.</p>
+          </div>
+          <div class="booking-grid" id="booking-grid"><!-- populated by JS --></div>
+        </div>
+
+        <!-- ── Confirmation Panel ── -->
+        <div id="demo-panel-confirm" class="demo-panel" style="display:none;">
+          <div style="text-align:center;">
+            <div class="demo-success-check" style="width:80px;height:80px;font-size:2.2rem;">✓</div>
+            <h3 style="font-size:1.5rem;font-weight:800;color:var(--text-primary);letter-spacing:-0.025em;margin:20px 0 6px;">Meeting Booked Successfully!</h3>
+            <p style="color:var(--text-secondary);font-size:0.93rem;">Invitations sent. Calendar updated. You're all set.</p>
+
+            <div class="confirm-detail-card">
+              <div class="confirm-row">
+                <span class="cr-label">📅 Date &amp; Time</span>
+                <span class="cr-val" id="confirm-datetime"></span>
+              </div>
+              <div class="confirm-row">
+                <span class="cr-label">⏱ Duration</span>
+                <span class="cr-val" id="confirm-duration"></span>
+              </div>
+              <div class="confirm-row">
+                <span class="cr-label">👤 Attendees</span>
+                <span class="cr-val">Colleen Sannito + Guest</span>
+              </div>
+              <div class="confirm-row">
+                <span class="cr-label">🎥 Meet Link</span>
+                <a class="cr-val" id="confirm-meet-link" href="#" style="color:var(--blue);text-decoration:none;font-size:0.88rem;"></a>
+              </div>
+            </div>
+
+            <button class="demo-next-btn demo-secondary-btn" onclick="resetDemo()" style="margin-top:28px;">↺ Try Another Booking</button>
+          </div>
+        </div>
+
+      </div><!-- /demo-card -->
     </div>
   </section>
 
@@ -417,31 +837,57 @@
       });
     });
 
-    // ── AI Meeting Advisor Chat ──────────────────────────────────────
-    const chatInput   = document.getElementById('chat-input');
-    const chatSend    = document.getElementById('chat-send');
-    const chatMessages = document.getElementById('chat-messages');
+    // ── Interactive Demo ─────────────────────────────────────────────
+    let demoAiDuration = '30 minutes';
 
-    function appendMessage(role, text) {
+    // Step progress
+    function goToStep(step) {
+      [1, 2, 3].forEach(i => {
+        const dot  = document.getElementById('prog-' + i);
+        const line = document.getElementById('line-' + i);
+        dot.className = 'demo-step-dot';
+        if (line) line.className = 'demo-step-line';
+        if (i < step)       { dot.classList.add('done');   if (line) line.classList.add('done'); }
+        else if (i === step) { dot.classList.add('active'); }
+      });
+      ['demo-panel-1','demo-panel-2','demo-panel-3','demo-panel-confirm'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+      const panel = document.getElementById('demo-panel-' + step);
+      if (panel) panel.style.display = 'block';
+    }
+
+    // Step 1 — Calendar connect
+    function connectCalendar(type) {
+      document.getElementById('cal-buttons').style.display  = 'none';
+      document.getElementById('cal-loading').style.display  = 'block';
+      setTimeout(() => {
+        document.getElementById('cal-loading').style.display = 'none';
+        document.getElementById('cal-success').style.display = 'block';
+      }, 1600);
+    }
+
+    // Step 2 — AI chat helpers
+    function demoChatAppend(role, text) {
       const isUser = role === 'user';
       const wrap = document.createElement('div');
       wrap.style.cssText = isUser
         ? 'background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;border-bottom-right-radius:3px;align-self:flex-end;max-width:88%;'
         : 'background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.25);border-radius:12px;padding:14px 16px;border-bottom-left-radius:3px;';
-
       const label = isUser
         ? '<div style="font-size:0.7rem;color:rgba(255,255,255,0.38);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">You</div>'
         : '<div style="font-size:0.7rem;color:#2563EB;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">✦ AI Recommendation</div>';
-
-      const textColor = isUser ? 'rgba(255,255,255,0.82)' : '#93c5fd';
-      wrap.innerHTML = `${label}<p style="color:${textColor};font-size:0.85rem;line-height:1.6;margin:0;">${text}</p>`;
-      chatMessages.appendChild(wrap);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      const color = isUser ? 'rgba(255,255,255,0.82)' : '#93c5fd';
+      wrap.innerHTML = `${label}<p style="color:${color};font-size:0.85rem;line-height:1.6;margin:0;">${text}</p>`;
+      const msgs = document.getElementById('demo-chat-messages');
+      msgs.appendChild(wrap);
+      msgs.scrollTop = msgs.scrollHeight;
     }
 
-    function appendLoading() {
+    function demoChatLoading() {
       const wrap = document.createElement('div');
-      wrap.id = 'chat-loading';
+      wrap.id = 'demo-chat-loader';
       wrap.style.cssText = 'background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.25);border-radius:12px;padding:14px 16px;border-bottom-left-radius:3px;';
       wrap.innerHTML = `
         <div style="font-size:0.7rem;color:#2563EB;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">✦ AI Meeting Advisor</div>
@@ -450,53 +896,158 @@
           <span style="width:7px;height:7px;background:#2563EB;border-radius:50%;display:inline-block;animation:dot-pulse 1.2s ease-in-out 0.4s infinite;"></span>
           <span style="width:7px;height:7px;background:#2563EB;border-radius:50%;display:inline-block;animation:dot-pulse 1.2s ease-in-out 0.8s infinite;"></span>
         </div>`;
-      chatMessages.appendChild(wrap);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      const msgs = document.getElementById('demo-chat-messages');
+      msgs.appendChild(wrap);
+      msgs.scrollTop = msgs.scrollHeight;
       return wrap;
     }
 
-    async function sendMessage() {
-      const text = chatInput.value.trim();
+    function getFallback(text) {
+      const t = text.toLowerCase();
+      if (t.includes('quick') || t.includes('standup') || t.includes('check-in') || t.includes('check in'))
+        return "I recommend 15 minutes for this — quick syncs thrive when they're tight and focused. There's no agenda here that needs more than a quarter hour. I found available slots matching that duration!";
+      if (t.includes('strategy') || t.includes('roadmap') || t.includes('planning') || t.includes('q3') || t.includes('q4'))
+        return "I recommend 60 minutes for this meeting — strategy and planning sessions need space to think, debate, and align. Rushing them usually means you'll need a follow-up. I found available slots matching that duration!";
+      if (t.includes('interview') || t.includes('onboard') || t.includes('client') || t.includes('demo'))
+        return "I recommend 45 minutes for this — enough time to build rapport and cover everything without running over. First impressions matter. I found available slots matching that duration!";
+      return "I recommend 30 minutes for this meeting — the ideal length for a focused discussion with clear next steps. You'll have time to cover the key points without unnecessary filler. I found available slots matching that duration!";
+    }
+
+    async function sendDemoMessage() {
+      const input = document.getElementById('demo-chat-input');
+      const text  = input.value.trim();
       if (!text) return;
+      input.value = '';
+      input.style.height = 'auto';
+      document.getElementById('demo-chat-send').disabled = true;
 
-      chatInput.value = '';
-      chatInput.style.height = 'auto';
-      chatSend.disabled = true;
+      demoChatAppend('user', text);
+      const loader = demoChatLoading();
 
-      appendMessage('user', text);
-      const loader = appendLoading();
-
+      let recommendation;
       try {
-        const res = await fetch('/api/recommend-meeting', {
+        const res  = await fetch('/api/recommend-meeting', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ description: text }),
         });
         const data = await res.json();
-        loader.remove();
-        appendMessage('ai', data.recommendation || 'Sorry, I couldn\'t generate a recommendation. Please try again.');
+        recommendation = data.recommendation || getFallback(text);
       } catch {
-        loader.remove();
-        appendMessage('ai', 'Couldn\'t reach the AI right now. Make sure the server is running, then try again.');
+        recommendation = getFallback(text);
       }
 
-      chatSend.disabled = false;
-      chatInput.focus();
+      loader.remove();
+
+      // Extract duration for Step 3 confirmation
+      const match = recommendation.match(/\b(15|30|45|60)\b/);
+      if (match) demoAiDuration = match[0] + ' minutes';
+
+      demoChatAppend('ai', recommendation);
+      setTimeout(() => {
+        document.getElementById('demo-chat-continue').style.display = 'flex';
+      }, 400);
+
+      document.getElementById('demo-chat-send').disabled = false;
     }
 
-    chatSend.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
-
-    // Auto-resize textarea as user types
-    chatInput.addEventListener('input', function () {
+    // Auto-resize demo textarea
+    document.getElementById('demo-chat-input').addEventListener('input', function () {
       this.style.height = 'auto';
       this.style.height = Math.min(this.scrollHeight, 120) + 'px';
     });
+    document.getElementById('demo-chat-input').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendDemoMessage(); }
+    });
+
+    // Step 3 — Build booking grid
+    function buildBookingGrid() {
+      document.getElementById('booking-grid-subtitle').textContent =
+        'Here are available slots for your AI-recommended ' + demoAiDuration + ' meeting.';
+
+      const grid = document.getElementById('booking-grid');
+      grid.innerHTML = '';
+
+      const DAY_NAMES   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const ALL_TIMES   = ['9:00 AM','10:30 AM','1:00 PM','2:30 PM','4:00 PM'];
+      // availability pattern per day [slot0..slot4]
+      const PATTERNS = [
+        [true,  true,  false, true,  true ],
+        [false, true,  true,  false, true ],
+        [true,  false, true,  true,  false],
+        [true,  true,  true,  false, true ],
+        [false, true,  false, true,  true ],
+      ];
+
+      let daysAdded = 0;
+      const cur = new Date();
+      cur.setDate(cur.getDate() + 1); // start tomorrow
+
+      while (daysAdded < 5) {
+        if (cur.getDay() !== 0 && cur.getDay() !== 6) {
+          const dayIdx  = daysAdded;
+          const daySnap = new Date(cur);
+
+          const col = document.createElement('div');
+          col.className = 'booking-day-col';
+
+          // Day header
+          const hdr = document.createElement('div');
+          hdr.className = 'booking-day-header';
+          hdr.innerHTML = `<div class="d-name">${DAY_NAMES[cur.getDay()]}</div>
+                           <div class="d-num">${cur.getDate()}</div>
+                           <div class="d-month">${MONTH_NAMES[cur.getMonth()]}</div>`;
+          col.appendChild(hdr);
+
+          // Time slots
+          ALL_TIMES.forEach((time, si) => {
+            const btn = document.createElement('button');
+            const avail = PATTERNS[dayIdx][si];
+            btn.className = 'time-slot' + (avail ? '' : ' unavailable');
+            btn.textContent = avail ? time : '—';
+            if (avail) {
+              btn.addEventListener('click', () => {
+                bookSlot(time, `${DAY_NAMES[daySnap.getDay()]}, ${MONTH_NAMES[daySnap.getMonth()]} ${daySnap.getDate()}`);
+              });
+            }
+            col.appendChild(btn);
+          });
+
+          grid.appendChild(col);
+          daysAdded++;
+        }
+        cur.setDate(cur.getDate() + 1);
+      }
+    }
+
+    // Booking confirmation
+    function bookSlot(time, dayStr) {
+      ['demo-panel-1','demo-panel-2','demo-panel-3'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+      const suffix = Math.random().toString(36).substr(2,3) + '-' + Math.random().toString(36).substr(2,4) + '-' + Math.random().toString(36).substr(2,3);
+      document.getElementById('confirm-datetime').textContent  = dayStr + ' at ' + time;
+      document.getElementById('confirm-duration').textContent  = demoAiDuration;
+      document.getElementById('confirm-meet-link').textContent = 'meet.google.com/' + suffix;
+      document.getElementById('demo-panel-confirm').style.display = 'block';
+    }
+
+    // Reset demo
+    function resetDemo() {
+      demoAiDuration = '30 minutes';
+      document.getElementById('cal-buttons').style.display  = 'flex';
+      document.getElementById('cal-loading').style.display  = 'none';
+      document.getElementById('cal-success').style.display  = 'none';
+
+      const msgs = document.getElementById('demo-chat-messages');
+      while (msgs.children.length > 1) msgs.removeChild(msgs.lastChild);
+      document.getElementById('demo-chat-input').value = '';
+      document.getElementById('demo-chat-input').style.height = 'auto';
+      document.getElementById('demo-chat-continue').style.display = 'none';
+
+      goToStep(1);
+    }
   </script>
 </body>
 </html>
